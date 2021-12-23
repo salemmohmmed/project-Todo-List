@@ -10,6 +10,35 @@ app.get("/", (req, res) => {
   res.json("GET / IS WORKING");
 });
 
+// app.get("/completed", (req, res) => {
+//   Todo.find({ isCompleted: true }, (err, data) => {
+//     if (err) {
+//       console.log("ERROR", err);
+//     } else {
+//       res.status(200).json(data);
+//     }
+//   });
+// });
+// app.get("/notcompleted", (req, res) => {
+//   Todo.find({ isCompleted: false }, (err, data) => {
+//     if (err) {
+//       console.log("ERROR", err);
+//     } else {
+//       res.status(200).json(data);
+//     }
+//   });
+// });
+
+app.get("/taasks/:Boolean", (req, res) => {
+  Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
+    if (err) {
+      console.log("ERROR", err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
+
 app.get("/tasks", (req, res) => {
   Todo.find({}, (err, data) => {
     if (err) {
