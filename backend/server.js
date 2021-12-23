@@ -10,25 +10,6 @@ app.get("/", (req, res) => {
   res.json("GET / IS WORKING");
 });
 
-// app.get("/completed", (req, res) => {
-//   Todo.find({ isCompleted: true }, (err, data) => {
-//     if (err) {
-//       console.log("ERROR", err);
-//     } else {
-//       res.status(200).json(data);
-//     }
-//   });
-// });
-// app.get("/notcompleted", (req, res) => {
-//   Todo.find({ isCompleted: false }, (err, data) => {
-//     if (err) {
-//       console.log("ERROR", err);
-//     } else {
-//       res.status(200).json(data);
-//     }
-//   });
-// });
-
 app.get("/taasks/:Boolean", (req, res) => {
   Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
     if (err) {
@@ -37,6 +18,26 @@ app.get("/taasks/:Boolean", (req, res) => {
       res.status(200).json(data);
     }
   });
+
+// نفسها 
+// app.get("/completed", (req, res) => {
+//   Todo.find({isCompleted:true},(err,data)=>{
+//   if(err){
+//     console.log("ERROR",err)
+//   }else{
+//     res.status(200).json(data)
+//   }
+//   })
+// });
+// app.get("/completed", (req, res) => {
+//   Todo.find({isCompleted:true},(err,data)=>{
+//   if(err){
+//     console.log("ERROR",err)
+//   }else{
+//     res.status(200).json(data)
+//   }
+//   })
+// });
 });
 
 app.get("/tasks", (req, res) => {
@@ -89,7 +90,6 @@ app.delete("/taskss/:id", (req, res) => {
       // } else {
       //   res.status(200).json("Success Delete" + req.params.title);
       // }
-
       deleteObj.deletedCount === 0
         ? res.status(404).json("User Not Found ")
         : res.status(200).json("Success Delete  " + req.params.id);
