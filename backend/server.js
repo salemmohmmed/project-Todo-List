@@ -31,33 +31,82 @@ app.post("/tasks", (req, res) => {
 });
 
 app.delete("/tasks/:title", (req, res) => {
-  Todo.deleteOne({ title:req.params.title},(err, deletObj) => {
+  Todo.deleteOne({ title: req.params.title }, (err, deletObj) => {
     if (err) {
       console.log("ERROR", err);
-      res.status(500).json("Ther Is Proplem DB ");
+      res.status(500).json(err);
     } else {
-      if (deletObj.deletedCount === 0) {
-        res.status(404).json("User Not Found ");
-      } else {
-        res.status(200).json("Success Delete" + req.params.title);
-      }
+      // if (deletObj.deletedCount === 0) {
+      //   res.status(404).json("User Not Found ");
+      // } else {
+      //   res.status(200).json("Success Delete" + req.params.title);
+      // }
+
+      deletObj.deletedCount === 0
+        ? res.status(404).json("User Not Found ")
+        : res.status(200).json("Success Delete" + req.params.title);
+    }
+  });
+});
+
+app.delete("/taskss/:id", (req, res) => {
+  Todo.deleteOne({ _id: req.params.id }, (err, deleteObj) => {
+    if (err) {
+      console.log("ERROR", err);
+      res.status(500).json(err);
+    } else {
+      // if (deletObj.deletedCount === 0) {
+      //   res.status(404).json("User Not Found ");
+      // } else {
+      //   res.status(200).json("Success Delete" + req.params.title);
+      // }
+
+      deleteObj.deletedCount === 0
+        ? res.status(404).json("User Not Found ")
+        : res.status(200).json("Success Delete  " + req.params.id);
     }
   });
 });
 
 app.put("/tasks/title/:oldtitle", (req, res) => {
-  Todo.updateOne({title:req.params.oldtitle},{title:req.body.newtitle},(err, updateObj) => {
-    if (err) {
-      console.log("ERROR", err);
-      res.status(500).json("Ther Is Proplem DB ");
-    } else {
-      if (updateObj.matchedCount === 0) {
-        res.status(404).json("User Not Found ");
+  //  Todo.findOneAndUpdateOne
+  Todo.updateOne(
+    { title: req.params.oldtitle },
+    { title: req.body.newtitle },
+    (err, updateObj) => {
+      if (err) {
+        console.log("ERROR", err);
+        res.status(500).json("err");
       } else {
-        res.status(200).json("Success update");
+        // if (updateObj.matchedCount === 0) {
+        //   res.status(404).json("User Not Found ");
+        // } else {
+        //   res.status(200).json("Success update");
+        // }
+        //      عدد الي تغيرو الي تحت
+        updateObj.modifiedCount === 0
+          ? res.status(404).json("User Not Found ")
+          : res.status(200).json("Success update  " + req.body.newtitle);
       }
     }
-  })
+  );
+});
+
+app.put("/taskss/:id", (req, res) => {
+  Todo.updateOne(
+    { _id: req.params.id },
+    { title: req.body.neewtitle },
+    (err, updaateObj) => {
+      if (err) {
+        console.log("ERROR", err);
+        res.status(500).json(err);
+      } else {
+        updaateObj.modifiedCount === 0
+          ? res.status(404).json("User Not Found ")
+          : res.status(200).json("Success update  " + req.body.neewtitle);
+      }
+    }
+  );
 });
 
 app.listen(5000, () => {
