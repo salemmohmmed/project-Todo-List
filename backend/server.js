@@ -10,14 +10,22 @@ app.get("/", (req, res) => {
   res.json("GET / IS WORKING");
 });
 
-app.get("/taasks/:Boolean", (req, res) => {
-  Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
+app.get("/taafisks", (req, res) => {
+  Todo.find({isCompleted: req.query.isCompleted}, (err, data) => {
     if (err) {
       console.log("ERROR", err);
     } else {
       res.status(200).json(data);
     }
   });
+// نفسها 2
+// Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
+//   if (err) {
+//     console.log("ERROR", err);
+//   } else {
+//     res.status(200).json(data);
+//   }
+// 
 
 // نفسها 
 // app.get("/completed", (req, res) => {
