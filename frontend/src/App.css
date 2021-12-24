@@ -1,6 +1,9 @@
 .App {
   border: 10px solid red;
 }
+.Todo{
+  border: 10px solid rgb(0, 26, 255);
+}
 
 /* 
 .App {
