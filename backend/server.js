@@ -11,41 +11,41 @@ app.get("/", (req, res) => {
 });
 
 app.get("/taafisks", (req, res) => {
-  Todo.find({isCompleted: req.query.isCompleted}, (err, data) => {
+  Todo.find({ isCompleted: req.query.isCompleted }, (err, data) => {
     if (err) {
       console.log("ERROR", err);
     } else {
       res.status(200).json(data);
     }
   });
-// نفسها 2
-// Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
-//   if (err) {
-//     console.log("ERROR", err);
-//   } else {
-//     res.status(200).json(data);
-//   }
-// 
+  // نفسها 2
+  // Todo.find({isCompleted: req.params.Boolean}, (err, data) => {
+  //   if (err) {
+  //     console.log("ERROR", err);
+  //   } else {
+  //     res.status(200).json(data);
+  //   }
+  //
 
-// نفسها 
-// app.get("/completed", (req, res) => {
-//   Todo.find({isCompleted:true},(err,data)=>{
-//   if(err){
-//     console.log("ERROR",err)
-//   }else{
-//     res.status(200).json(data)
-//   }
-//   })
-// });
-// app.get("/completed", (req, res) => {
-//   Todo.find({isCompleted:true},(err,data)=>{
-//   if(err){
-//     console.log("ERROR",err)
-//   }else{
-//     res.status(200).json(data)
-//   }
-//   })
-// });
+  // نفسها
+  // app.get("/completed", (req, res) => {
+  //   Todo.find({isCompleted:true},(err,data)=>{
+  //   if(err){
+  //     console.log("ERROR",err)
+  //   }else{
+  //     res.status(200).json(data)
+  //   }
+  //   })
+  // });
+  // app.get("/completed", (req, res) => {
+  //   Todo.find({isCompleted:true},(err,data)=>{
+  //   if(err){
+  //     console.log("ERROR",err)
+  //   }else{
+  //     res.status(200).json(data)
+  //   }
+  //   })
+  // });
 });
 
 app.get("/tasks", (req, res) => {
@@ -83,6 +83,19 @@ app.delete("/tasks/:title", (req, res) => {
       deletObj.deletedCount === 0
         ? res.status(404).json("User Not Found ")
         : res.status(200).json("Success Delete" + req.params.title);
+    }
+  });
+});
+
+// حذف اكثر من عنصر
+app.delete("/deleted", (req, res) => {
+  Todo.deleteMany({ isCompleted: false }, (err, deletObj) => {
+    if (err) {
+      console.log("ERROR", err);
+    } else {
+      deletObj.deletedCount === 0
+        ? res.status(404).json("User Not Found ")
+        : res.status(200).json("Success Delete");
     }
   });
 });
@@ -129,6 +142,29 @@ app.put("/tasks/title/:oldtitle", (req, res) => {
   );
 });
 
+app.put("/tasksss/:oldtitle", (req, res) => {
+  //  Todo.findOneAndUpdateOne
+  Todo.updateOne(
+    { title: req.params.oldtitle },
+    { isCompleted: req.body.newCompleted },
+    (err, updateObj) => {
+      if (err) {
+        console.log("ERROR", err);
+        res.status(500).json("err");
+      } else {
+        // if (updateObj.matchedCount === 0) {
+        //   res.status(404).json("User Not Found ");
+        // } else {
+        //   res.status(200).json("Success update");
+        // }
+        //      عدد الي تغيرو الي تحت
+        updateObj.modifiedCount === 0
+          ? res.status(404).json("User Not Found ")
+          : res.status(200).json("Success update  " + req.body.newCompleted);
+      }
+    }
+  );
+});
 app.put("/taskss/:id", (req, res) => {
   Todo.updateOne(
     { _id: req.params.id },
