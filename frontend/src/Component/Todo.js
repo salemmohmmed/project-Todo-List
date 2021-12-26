@@ -8,8 +8,8 @@ export default function Todo(props) {
     return (
         <div className='Todo'>
             <p>TITLE:{title}</p>
-            <p>ID:{_id}</p>
-            <p>IS COMPLETED :{isCompleted} </p>
+            {/* <p>ID:{_id}</p>
+            <p>IS COMPLETED :{isCompleted} </p> */}
             
         </div>
     )
