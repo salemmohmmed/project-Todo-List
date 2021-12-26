@@ -1,15 +1,11 @@
-const {Schema, model} = require("mongoose")
+const {Schema, model} = require("mongoose");
 
 const todoSchema=new Schema({
-    title:String,
-    isCompleted:Boolean
+  title: String,
+  isCompleted: Boolean
 })
 
-
 // Model
+const Todo=model('Todo',todoSchema)
 
-const Todo = model("Todo",todoSchema)
-
-//  ماننسى نصدر الملف 
-
-module.exports= Todo
+module.exports = Todo
