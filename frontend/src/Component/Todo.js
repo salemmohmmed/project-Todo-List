@@ -7,10 +7,11 @@ export default function Todo(props) {
     }=props.task
     return (
         <div className='Todo'>
-            <p>TITLE:{title}</p>
-            {/* <p>ID:{_id}</p>
-            <p>IS COMPLETED :{isCompleted} </p> */}
-            
+            <input type="checkbox" checked={isCompleted}/> 
+            <span style={{ textDecoration: isCompleted ? "line-through" : "none" }}>
+        {title}
+      </span>
+            <button>x</button>
         </div>
     )
 }

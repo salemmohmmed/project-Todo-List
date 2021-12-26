@@ -1,3 +1,8 @@
+
+.Todo span{
+  margin: 0px 10px 0px 10px;
+}
+
 .App {
   border: 10px solid red;
 }
