@@ -9,6 +9,7 @@ export default function App() {
   useEffect(()=>{
     getData()
   },[])
+  
   const getData = () => {
     //  من الباك ايند هذا يجيب داتا 
     axios
