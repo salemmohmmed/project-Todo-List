@@ -35,8 +35,22 @@ export default function App() {
       console.log("ERR:", err);
     });
   }
+
+  const deleteTodo=(id)=>{
+    axios
+    .delete(`http://localhost:5000/taskss/${id}`)
+    .then((response) => {
+      // console.log("RESPONSE",response)
+      console.log("DATA", response.data);
+      getData()
+    })
+    .catch((err) => {
+      console.log("ERR:", err);
+    });
+  }
   
-  const mapOverTask = tasks.map((taskObj, i) => <Todo key={(i)} task={taskObj}></Todo>);
+  const mapOverTask = tasks.map((taskObj, i) => 
+  <Todo key={(i)} task={taskObj} deleteTodo={deleteTodo} ></Todo>);
 
   return (
     <div className="app">

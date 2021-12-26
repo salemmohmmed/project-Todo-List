@@ -11,7 +11,9 @@ export default function Todo(props) {
             <span style={{ textDecoration: isCompleted ? "line-through" : "none" }}>
         {title}
       </span>
-            <button>x</button>
+            <button onClick={()=>{
+                props.deleteTodo(_id)
+            }}>x</button>
         </div>
     )
 }
