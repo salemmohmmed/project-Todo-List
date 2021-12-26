@@ -41,7 +41,6 @@ export default function App() {
   return (
     <div className="app">
       <p> App</p>
-      
       <button onClick={getData}> GET tasck </button>
       <Add createfunc={postNewTodo}/>
       {mapOverTask}
