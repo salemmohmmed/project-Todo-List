@@ -4,6 +4,8 @@ const app = express();
 
 const db = require("./db");
 const Todo = require("./todo");
+const Username = require("./Username");
+
 // console.log(Todo);
 
 app.use(express.json());
@@ -134,6 +136,47 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
       }
     }
   );
+});
+
+app.post("/username/register", (req, res) => {
+  Username.create(req.body, (err, newUser) => {
+    if (err) {
+      console.log("ERROR: ", err);
+      res.status(400).json({
+        message: " the email already taken",
+      });
+    } else {
+      res.status(201).json({
+        message: "Create new User successfully ",
+      });
+    }
+  });
+});
+
+app.post("/username/login", (req, res) => {
+  Username.find({ email: req.body.email }, (err, Arryuserfound) => {
+    // console.log(Arryuserfound);
+    if (err) {
+      console.log("ERROR: ", err);
+    } else {
+      if (Arryuserfound.length === 1) {
+        if (req.body.password === Arryuserfound[0].password) {
+          res.status(200).json({
+            message: "  login successfully ",
+            username: Arryuserfound[0].username,
+          });
+        } else {
+          res.status(400).json({
+            message: " Wrong password",
+          });
+        }
+      } else {
+        res.status(404).json({
+          message: "The email entered is not Register",
+        });
+      }
+    }
+  });
 });
 
 app.listen(5000, () => {

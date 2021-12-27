@@ -1,6 +1,6 @@
 const mongoose= require("mongoose")
 
-const dbURI='mongodb://localhost:27017/TodoListV01'
+const dbURI='mongodb://localhost:27017/TodoListV011'
 mongoose.connect(dbURI)
 
 const db = mongoose.connection
