@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 import Todo from "./Component/Todo";
 import Add from "./Component/Add";
+import Register from "./Component/Register";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -131,8 +132,10 @@ export default function App() {
         GET PENDING
       </button>
 
-      <Add createFunc={postNewTodo} />
-      {mapOverTasks}
+        <Register/>
+
+      {/* <Add createFunc={postNewTodo} />
+      {mapOverTasks} */}
     </div>
   );
 }
