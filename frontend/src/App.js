@@ -5,6 +5,9 @@ import axios from "axios";
 import Todo from "./Component/Todo";
 import Add from "./Component/Add";
 import Register from "./Component/Register";
+import Login from "./Component/Login";
+
+
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -133,6 +136,7 @@ export default function App() {
       </button>
 
         <Register/>
+        <Login/>
 
       {/* <Add createFunc={postNewTodo} />
       {mapOverTasks} */}

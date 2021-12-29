@@ -3,8 +3,9 @@
 }
 
 
-.Todo{
+.Todo,.Login{
   border: blue solid 3px;
+  margin: 10px;
 }
 .Todo span{
   margin: 0px 10px 0px 10px;
