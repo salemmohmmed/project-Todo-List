@@ -1,9 +1,18 @@
-.App{
+#log1{
+  margin: 10px;
+}
+
+.log2{
+  width: 300px;
+}
+
+
+/* .App{
   border: red solid 5px;
 }
 
 
-.Todo,.Login{
+.Todo,{
   border: blue solid 3px;
   margin: 10px;
 }
@@ -13,7 +22,7 @@
 
 .Add{
   border: green solid 3px;
-}
+} */
 
 /* 
 .App {

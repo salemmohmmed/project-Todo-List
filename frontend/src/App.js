@@ -106,6 +106,13 @@ export default function App() {
         console.log("ERR: ", err);
       });
   };
+
+  const logoutfnc = ()=>{
+    setisLoggedIn(false)
+setusername("")
+
+  }
+
   const mapOverTasks = tasks.map((taskObj, i) => (
     <Todo
       key={taskObj._id}
@@ -120,17 +127,38 @@ export default function App() {
 
     <p> Name: {username} </p>
 
-      <nav>
-        <Link to="/home"> Home </Link> {"  |  "}
-        <Link to="/login"> Login </Link> {"  |  "}
-        <Link to="/register"> Register </Link>
-      </nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <Link className="nav-link active" to="/home"> Home </Link>
+        </li>
+        <li class="nav-item">
+          <Link className="nav-link" to="/login"> Login </Link>
+        </li>
+        <li class="nav-item">
+          <Link className="nav-link" to="/register"> Register </Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
       <br />
+      <button onClick={logoutfnc}> LOGOUT</button>
       <Routes>
         <Route
           path="/home"
           element={
-            <div className="Home">
+            <div className="hom">
               {/* click on button should bring all Data */}
               <button onClick={getData}>GET TASKS</button>
               <button onClick={deleteTasks}>DELETE Completed tasks </button>
