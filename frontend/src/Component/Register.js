@@ -15,7 +15,7 @@ export default function Register() {
       password,
       username,
     };
-    
+
     axios
       .post(`http://localhost:5000/username/register`, newUser)
       .then((response) => {
@@ -27,40 +27,58 @@ export default function Register() {
   };
   return (
     <div className="Register">
-      <form action="">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          placeholder="write email here ..."
-          onChange={(e) => {
-            setemail(e.target.value);
-          }}
-          value={email}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          placeholder="write password here ..."
-          onChange={(e) => {
-            setpassword(e.target.value);
-          }}
-          value={password}
-        />
-        <br />
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          placeholder="write username here ..."
-          onChange={(e) => {
-            setusername(e.target.value);
-          }}
-          value={username}
-        />
-        <br />
-        <input type="submit" value="Register" onClick={registerFnc} />
-      </form>
-      <Link to="/login"> if you have accunt ? </Link>
+      <center>
+        <form className="log2" action="">
+          <div className="form-floating mb-3">
+            <input
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
+              value={email}
+              type="email"
+              class="form-control"
+            />
+            <label htmlFor="email" for="floatingInput">
+              Email address
+            </label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              onChange={(e) => {
+                setusername(e.target.value);
+              }}
+              value={username}
+              type="text"
+              className="form-control"
+            />
+            <label htmlFor="" for="floatingInput">
+              Username
+            </label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
+              value={password}
+              type="password"
+              className="form-control"
+            />
+            <label htmlFor="password">Password</label>
+          </div>
+
+          <input
+            id="log1"
+            className="btn btn-primary"
+            type="submit"
+            value="Register"
+            onClick={registerFnc}
+          />
+        </form>
+        <Link to="/login"> if you have accunt ? </Link>
+      </center>
     </div>
   );
 }
