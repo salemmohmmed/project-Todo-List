@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [email, setemail] = useState("salemdoba@hotmail.com");
@@ -59,6 +60,7 @@ export default function Register() {
         <br />
         <input type="submit" value="Register" onClick={registerFnc} />
       </form>
+      <Link to="/login"> if you have accunt ? </Link>
     </div>
   );
 }

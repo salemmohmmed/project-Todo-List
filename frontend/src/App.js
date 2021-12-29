@@ -9,6 +9,8 @@ import Login from "./Component/Login";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [username, setusername] = useState("");
 
   useEffect(() => {
     getData();
@@ -116,11 +118,19 @@ export default function App() {
     <div className="App">
       <p>app</p>
 
+    <p> Name: {username} </p>
+
+      <nav>
+        <Link to="/home"> Home </Link> {"  |  "}
+        <Link to="/login"> Login </Link> {"  |  "}
+        <Link to="/register"> Register </Link>
+      </nav>
+      <br />
       <Routes>
         <Route
-          path="/Home"
+          path="/home"
           element={
-            <div className="Home" >
+            <div className="Home">
               {/* click on button should bring all Data */}
               <button onClick={getData}>GET TASKS</button>
               <button onClick={deleteTasks}>DELETE Completed tasks </button>
@@ -144,8 +154,13 @@ export default function App() {
             </div>
           }
         />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <Login setisLoggedIn={setisLoggedIn} setusername={setusername} />
+          }
+        />
       </Routes>
     </div>
   );
