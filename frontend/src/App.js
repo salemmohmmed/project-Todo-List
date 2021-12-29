@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-
+import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Todo from "./Component/Todo";
 import Add from "./Component/Add";
 import Register from "./Component/Register";
 import Login from "./Component/Login";
-
-
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -117,29 +115,38 @@ export default function App() {
   return (
     <div className="App">
       <p>app</p>
-      {/* click on button should bring all Data */}
-      <button onClick={getData}>GET TASKS</button>
-      <button onClick={deleteTasks}>DELETE Completed tasks </button>
-      <button
-        onClick={() => {
-          filterData(true);
-        }}
-      >
-        GET DONE
-      </button>
-      <button
-        onClick={() => {
-          filterData(false);
-        }}
-      >
-        GET PENDING
-      </button>
 
-        <Register/>
-        <Login/>
+      <Routes>
+        <Route
+          path="/Home"
+          element={
+            <div className="Home" >
+              {/* click on button should bring all Data */}
+              <button onClick={getData}>GET TASKS</button>
+              <button onClick={deleteTasks}>DELETE Completed tasks </button>
+              <button
+                onClick={() => {
+                  filterData(true);
+                }}
+              >
+                GET DONE
+              </button>
+              <button
+                onClick={() => {
+                  filterData(false);
+                }}
+              >
+                GET PENDING
+              </button>
 
-      {/* <Add createFunc={postNewTodo} />
-      {mapOverTasks} */}
+              <Add createFunc={postNewTodo} />
+              {mapOverTasks}
+            </div>
+          }
+        />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
