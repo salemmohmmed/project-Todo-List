@@ -122,8 +122,10 @@ setusername("")
     />
   ));
   return (
-    <div className="App">
-      <p>app</p>
+    <div className="">
+
+      <center>
+      
 
     <p> Name: {username} </p>
 
@@ -147,29 +149,30 @@ setusername("")
         <li class="nav-item">
           <Link className="nav-link" to="/register"> Register </Link>
         </li>
+        <button className="btn btn-primary" onClick={logoutfnc}> LOGOUT</button>
       </ul>
     </div>
   </div>
 </nav>
 
       <br />
-      <button onClick={logoutfnc}> LOGOUT</button>
+      
       <Routes>
         <Route
           path="/home"
           element={
             <div className="hom">
               {/* click on button should bring all Data */}
-              <button onClick={getData}>GET TASKS</button>
-              <button onClick={deleteTasks}>DELETE Completed tasks </button>
-              <button
+              <button className="btn btn-secondary btn-sm" onClick={getData}>GET TASKS</button>
+              <button className="btn btn-secondary btn-sm" onClick={deleteTasks}>DELETE Completed tasks </button>
+              <button className="btn btn-secondary btn-sm"
                 onClick={() => {
                   filterData(true);
                 }}
               >
                 GET DONE
               </button>
-              <button
+              <button className="btn btn-secondary btn-sm"
                 onClick={() => {
                   filterData(false);
                 }}
@@ -178,7 +181,8 @@ setusername("")
               </button>
 
               <Add createFunc={postNewTodo} />
-              {mapOverTasks}
+              <div class="list-group">  {mapOverTasks}</div>
+             
             </div>
           }
         />
@@ -190,6 +194,7 @@ setusername("")
           }
         />
       </Routes>
-    </div>
+      </center>
+      </div>
   );
 }

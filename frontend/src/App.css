@@ -2,29 +2,23 @@
   margin: 10px;
 }
 
-.log2{
+.log2 ,.Add {
   width: 300px;
+
 }
 
 button, input, optgroup, select, textarea {
   margin: 4px;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+ 
 }
 
 
- .App{
+ .App {
   border: red solid 5px;
 }
 
 
-.Todo{
-  border: blue solid 3px;
-  margin: 10px;
-  padding: 10px;
 
-}
 
 /* 
 

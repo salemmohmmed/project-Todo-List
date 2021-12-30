@@ -12,14 +12,36 @@ export default function Add(props) {
 
   return (
     <div className="Add">
-      <input
-        type="text"
-        placeholder="Write new title here ..."
+<center>
+<nav class="navbar navbar-light bg-light">
+
+  <div class="container-fluid">
+    <form class="d-flex">
+      <input className="form-control me-2" type="text" placeholder="Add your Tasck here..." aria-label="Add your item here..."
         onChange={(e) => {
           setNewTitle(e.target.value);
         }}
       />
-      <button onClick={createNewTodo}>Create New Todo</button>
+
+<button type="button" className="btn btn-outline-success" onClick={createNewTodo}>Add</button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+
+</center>
+
+  
+  
+
+
+
+  
+     
+     
     </div>
   );
 }
