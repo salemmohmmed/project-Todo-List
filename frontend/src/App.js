@@ -110,7 +110,6 @@ export default function App() {
   const logoutfnc = ()=>{
     setisLoggedIn(false)
 setusername("")
-
   }
 
   const mapOverTasks = tasks.map((taskObj, i) => (
@@ -127,29 +126,47 @@ setusername("")
       <center>
       
 
-    <p> Name: {username} </p>
+    
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">Navbar</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
 
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
           <Link className="nav-link active" to="/home"> Home </Link>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <Link className="nav-link" to="/login"> Login </Link>
         </li>
         <li class="nav-item">
           <Link className="nav-link" to="/register"> Register </Link>
         </li>
-        <button className="btn btn-primary" onClick={logoutfnc}> LOGOUT</button>
+
+        <li class="nav-item">
+        <button onClick={logoutfnc} class="btn btn-secondary">
+          Logout
+        </button>
+        </li>
+         
+        
+
+        <button
+          type="button"
+          className="btn btn-secondary"
+          data-bs-toggle="popover"
+          title="Todo List"
+          data-bs-content="Welcome to Todo List Web Application"
+        >
+          {username ? "Welcome " + username : "Please Login"}{" "}
+        </button>
+      
       </ul>
     </div>
   </div>
@@ -181,7 +198,7 @@ setusername("")
               </button>
 
               <Add createFunc={postNewTodo} />
-              <div class="list-group">  {mapOverTasks}</div>
+              <div className="list-group">  {mapOverTasks}</div>
              
             </div>
           }
